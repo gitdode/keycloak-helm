@@ -11,8 +11,8 @@ An external database, i.e. PostgreSQL
 ### TLS ###
 
 For TLS, install cert-manager: https://cert-manager.io/docs/installation/  
-To use your own CA: https://cert-manager.io/docs/configuration/ca/
-To secure ingresses: https://cert-manager.io/docs/usage/ingress/
+To use your own CA: https://cert-manager.io/docs/configuration/ca/  
+To secure ingresses: https://cert-manager.io/docs/usage/ingress/  
 
 Create your own CA cert + key:  
 
