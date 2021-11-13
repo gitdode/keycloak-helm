@@ -1,0 +1,8 @@
+keycloak:
+  hostname: keycloak.luniks.net
+  user: keycloak
+  database:
+    vendor: postgres
+    addr: 192.168.3.3:5432
+    database: keycloak
+    user: keycloak

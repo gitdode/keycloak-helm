@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    keycloak.service: keycloak
+  name: keycloak
+  namespace: dode
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  - name: "8585"
+    port: 8585
+    targetPort: 8585
+  selector:
+    keycloak.service: keycloak
+  type: NodePort
+status:
+  loadBalancer: {}

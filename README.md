@@ -1,29 +1,48 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is Dode's Helm Chart for Keycloak
 
-### What is this repository for? ###
+### Prerequisites ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+An external database, i.e. PostgreSQL
 
-### How do I get set up? ###
+For TLS, install cert-manager: https://cert-manager.io/docs/installation/  
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Create your own CA cert + key:  
 
-### Contribution guidelines ###
+    openssl genrsa -out rootCAKey.pem 2048
+    openssl req -x509 -sha256 -new -nodes -key rootCAKey.pem -days 3650 -out rootCACert.pem
 
-* Writing tests
-* Code review
-* Other guidelines
+Encode the cert + key with Base64:  
 
-### Who do I talk to? ###
+    cat rootCAKey.pem | base64 -w0
+    cat rootCACert.pem | base64 -w0
 
-* Repo owner or admin
-* Other community or team contact
+Create a secret for the cert + key:
+
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ca-key-pair
+      namespace: dode
+    data:
+      tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUR5VENDQXJH...
+      tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJ...
+
+Create a CA issuer:
+
+    apiVersion: cert-manager.io/v1
+    kind: Issuer
+    metadata:
+      name: ca-issuer
+      namespace: dode
+    spec:
+      ca:
+        secretName: ca-key-pair
+
+### Install Chart ###
+
+* Set database coordinates in `values.yaml`
+* Update `keycloak-db-secret.yaml` if necessary
+* Set `keycloak.hostname` in `values.yaml`
+* Install the chart!

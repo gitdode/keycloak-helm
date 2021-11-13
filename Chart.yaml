@@ -1,0 +1,5 @@
+apiVersion: v2
+name: keycloak
+description: Dodes Helm Chart for Keycloak
+version: 1.0.0
+type: application
