@@ -2,11 +2,17 @@
 
 This is Dode's Helm Chart for Keycloak
 
-### Prerequisites ###
+## Prerequisites ##
+
+### Database ###
 
 An external database, i.e. PostgreSQL
 
+### TLS ###
+
 For TLS, install cert-manager: https://cert-manager.io/docs/installation/  
+To use your own CA: https://cert-manager.io/docs/configuration/ca/
+To secure ingresses: https://cert-manager.io/docs/usage/ingress/
 
 Create your own CA cert + key:  
 
@@ -40,7 +46,7 @@ Create a CA issuer:
       ca:
         secretName: ca-key-pair
 
-### Install Chart ###
+## Install Chart ##
 
 * Set database coordinates in `values.yaml`
 * Update `keycloak-db-secret.yaml` if necessary
