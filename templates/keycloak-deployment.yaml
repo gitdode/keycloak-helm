@@ -55,6 +55,14 @@ spec:
         ports:
         - containerPort: 8080
         resources: {}
+        volumeMounts:
+          - name: volume
+            mountPath: /test
+            subPath: test
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
       restartPolicy: Always
       serviceAccountName: ""
 status: {}
