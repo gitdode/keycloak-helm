@@ -18,38 +18,7 @@ spec:
     spec:
       containers:
       - args:
-        - -c
-        - standalone.xml
-        - -b
-        - 0.0.0.0
-        - --debug 
-        - "*:8585"
-        - -Dkeycloak.profile.feature.token_exchange=enabled
-        - -Dkeycloak.profile.feature.admin_fine_grained_authz=enabled
-        env:
-        - name: KEYCLOAK_USER
-          value: {{ .Values.keycloak.user }}
-        - name: KEYCLOAK_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: keycloak-user-secret
-              key: password
-        - name: DB_VENDOR
-          value: {{ .Values.keycloak.database.vendor }}
-        - name: DB_ADDR
-          value: {{ .Values.keycloak.database.addr }}
-        - name: DB_DATABASE
-          value: {{ .Values.keycloak.database.database }}
-        - name: DB_USER
-          value: {{ .Values.keycloak.database.user }}
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: keycloak-db-secret
-              key: password
-        - name: PROXY_ADDRESS_FORWARDING
-          value: "true"
-        image: jboss/keycloak
+        image: 192.168.3.3:5000/dode/keycloak:latest
         imagePullPolicy: ""
         name: keycloak
         ports:

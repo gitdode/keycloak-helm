@@ -1,5 +1,5 @@
 keycloak:
-  hostname: keycloak.luniks.net
+  hostname: keycloak.local
   user: keycloak
   database:
     vendor: postgres
