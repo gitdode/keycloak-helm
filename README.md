@@ -4,6 +4,17 @@ This is Dode's Helm Chart for Keycloak
 
 ## Prerequisites ##
 
+Build an optimized Keycloak Quarkus image:
+
+    docker build . -t 192.168.3.3:5000/dode/keycloak
+
+To allow access to local insecure registry, edit `/etc/rancher/rke2/registries.yaml`:  
+
+    mirrors:
+      "192.168.3.3:5000":
+        endpoint:
+          - "http://192.168.3.3:5000"
+
 ### Database ###
 
 An external database, i.e. PostgreSQL
