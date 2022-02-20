@@ -10,7 +10,7 @@ COPY --from=builder /opt/keycloak/lib/quarkus/ /opt/keycloak/lib/quarkus/
 WORKDIR /opt/keycloak
 ENV KEYCLOAK_ADMIN=keycloak
 ENV KEYCLOAK_ADMIN_PASSWORD=keycloak
-ENV KC_DB_URL=jdbc:postgresql://192.168.3.3:5432/keycloak
+ENV KC_DB_URL=jdbc:postgresql://database:5432/keycloak
 ENV KC_DB_USERNAME=keycloak
 ENV KC_DB_PASSWORD=keycloak
 # ENV KC_HOSTNAME=localhost:8443

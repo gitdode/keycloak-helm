@@ -1,16 +1,17 @@
+{{ if eq .Values.storage.class "local-storage" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: keycloak-local-pv
+  name: local-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 1Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /data/Work/Kubernetes/keycloak-volume/
+    path: {{ .Values.storage.local.path }}
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -19,3 +20,4 @@ spec:
           operator: Exists
           values:
           # - localhost
+{{ end }}

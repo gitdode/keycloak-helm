@@ -4,9 +4,14 @@ This is Dode's Helm Chart for Keycloak
 
 ## Prerequisites ##
 
+Tested with a "bare metal" RKE2.
+
+### Image ###
+
 Build an optimized Keycloak Quarkus image:
 
     docker build . -t 192.168.3.3:5000/dode/keycloak
+    docker push 192.168.3.3:5000/dode/keycloak
 
 To allow access to local insecure registry, edit `/etc/rancher/rke2/registries.yaml`:  
 
@@ -15,9 +20,9 @@ To allow access to local insecure registry, edit `/etc/rancher/rke2/registries.y
         endpoint:
           - "http://192.168.3.3:5000"
 
-### Database ###
+### Storage ###
 
-An external database, i.e. PostgreSQL
+Either create a directory `/data/keycloak` or set up an NFS export, see `values.yaml`.
 
 ### TLS ###
 
@@ -57,9 +62,9 @@ Create a CA issuer:
       ca:
         secretName: ca-key-pair
 
-## Install Chart ##
+## Installation ##
 
-* Set database coordinates in `values.yaml`
-* Update `keycloak-db-secret.yaml` if necessary
-* Set `keycloak.hostname` in `values.yaml`
+* Build the image, tag and push it to a registry
+* Set `keycloak.image` and `keycloak.hostname` in `values.yaml`
+* Set up `storage` in `values.yaml`, create directory or set up NFS export
 * Install the chart!
