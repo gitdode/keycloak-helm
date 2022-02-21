@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  namespace: dode
+  labels:
+    keycloak.service: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      keycloak.service: database
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        keycloak.service: database
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: en_US.UTF-8
+        - name: POSTGRES_DB
+          value: keycloak
+        - name: POSTGRES_USER
+          value: keycloak
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-db-secret
+              key: password
+        image: postgres:14
+        imagePullPolicy: ""
+        name: database
+        ports:
+        - containerPort: 5432
+        resources: {}
+        volumeMounts:
+        - name: database
+          mountPath: /var/lib/postgresql/data
+          subPath: dbdata
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        - name: database
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
+status: {}

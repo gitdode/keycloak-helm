@@ -16,5 +16,6 @@ spec:
   selector:
     keycloak.service: keycloak
   type: NodePort
+  # type: LoadBalancer
 status:
   loadBalancer: {}

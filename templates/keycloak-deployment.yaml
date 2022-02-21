@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - args:
-        image: 192.168.3.3:5000/dode/keycloak:latest
+        image: {{ .Values.keycloak.image }}
         imagePullPolicy: ""
         name: keycloak
         ports:
