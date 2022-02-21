@@ -17,7 +17,8 @@ spec:
         keycloak.service: database
     spec:
       containers:
-      - env:
+      - args:
+        env:
         - name: LANG
           value: en_US.UTF-8
         - name: POSTGRES_DB
@@ -39,9 +40,9 @@ spec:
         - name: database
           mountPath: /var/lib/postgresql/data
           subPath: dbdata
-      restartPolicy: Always
-      serviceAccountName: ""
-      volumes:
+        restartPolicy: Always
+        serviceAccountName: ""
+        volumes:
         - name: database
           persistentVolumeClaim:
             claimName: keycloak-pvc
