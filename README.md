@@ -21,7 +21,7 @@ Set values in `Dockerfile`, then build and push the image:
       docker build . -t 192.168.3.3:5000/dode/keycloak
       docker push 192.168.3.3:5000/dode/keycloak
 
-To allow access to local insecure registry, edit /etc/rancher/rke2/registries.yaml:
+To allow access to local insecure registry, edit `/etc/rancher/rke2/registries.yaml`:
 
     mirrors:
       "192.168.3.3:5000":
