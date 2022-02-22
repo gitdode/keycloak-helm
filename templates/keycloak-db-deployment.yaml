@@ -39,10 +39,10 @@ spec:
         - name: database
           mountPath: /var/lib/postgresql/data
           subPath: dbdata
-      restartPolicy: Always
-      serviceAccountName: ""
       volumes:
         - name: database
           persistentVolumeClaim:
             claimName: keycloak-pvc
+      restartPolicy: Always
+      serviceAccountName: ""
 status: {}

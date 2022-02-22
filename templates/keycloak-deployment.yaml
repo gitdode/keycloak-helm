@@ -18,6 +18,37 @@ spec:
     spec:
       containers:
       - args:
+        - start
+        - --auto-build
+        env:
+        - name: LANG
+          value: C.UTF-8
+        - name: KC_FEATURES
+          value: token-exchange,admin-fine-grained-authz
+        - name: KC_DB
+          value: postgres
+        - name: KEYCLOAK_ADMIN
+          value: keycloak
+        - name: KEYCLOAK_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-user-secret
+              key: password
+        - name: KC_DB_URL
+          value: jdbc:postgresql://database:5432/keycloak
+        - name: KC_DB_USERNAME
+          value: keycloak
+        - name: KC_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-db-secret
+              key: password
+        - name: KC_HOSTNAME_STRICT
+          value: "false"
+        - name: KC_HTTP_ENABLED
+          value: "true"
+        - name: KC_PROXY
+          value: edge
         image: {{ .Values.keycloak.image }}
         imagePullPolicy: ""
         name: keycloak

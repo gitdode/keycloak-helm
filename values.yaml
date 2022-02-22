@@ -8,5 +8,5 @@ storage:
     path: /exports/keycloak
 
 keycloak:
-  image: 192.168.3.3:5000/dode/keycloak:latest
+  image: quay.io/keycloak/keycloak:latest
   hostname: keycloak.local
