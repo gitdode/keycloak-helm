@@ -98,6 +98,6 @@ For the Keycloak admin user ("keycloak"):
 
     kubectl -n dode create secret generic keycloak-user-secret --from-literal=password=keycloak
 
-Install the chart!
+### Install the chart! ###
 
     helm -n dode upgrade --install keycloak .
