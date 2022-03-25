@@ -43,8 +43,8 @@ spec:
             secretKeyRef:
               name: keycloak-db-secret
               key: password
-        - name: KC_HOSTNAME_STRICT
-          value: "false"
+        - name: KC_HOSTNAME
+          value: {{ .Values.keycloak.hostname }}
         - name: KC_HTTP_ENABLED
           value: "true"
         - name: KC_PROXY
