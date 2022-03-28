@@ -2,11 +2,11 @@ storage:
   class: local-storage
   # class: nfs
   local:
-    path: /data/keycloak
+    path: /home/dode/Keycloak
   nfs:
     server: 192.168.3.3
     path: /exports/keycloak
 
 keycloak:
-  image: quay.io/keycloak/keycloak:latest
-  hostname: keycloak.local
+  image: quay.io/keycloak/keycloak:17.0.1
+  hostname: keycloak.luniks.net
