@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    keycloak.service: keycloak
+  name: keycloak
+  namespace: dode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      keycloak.service: keycloak
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        keycloak.service: keycloak
+    spec:
+      containers:
+      - args:
+        image: {{ .Values.keycloak.image }}
+        imagePullPolicy: ""
+        name: keycloak
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}

@@ -43,10 +43,10 @@ spec:
             secretKeyRef:
               name: keycloak-db-secret
               key: password
-        - name: KC_HTTP_ENABLED
-          value: "true"
         - name: KC_HOSTNAME
           value: {{ .Values.keycloak.hostname }}
+        - name: KC_HTTP_ENABLED
+          value: "true"
         - name: KC_PROXY
           value: reencrypt
         image: {{ .Values.keycloak.image }}

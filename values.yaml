@@ -10,4 +10,3 @@ storage:
 keycloak:
   image: quay.io/keycloak/keycloak:17.0.1
   hostname: keycloak.luniks.net
-
