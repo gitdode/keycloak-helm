@@ -2,7 +2,7 @@ storage:
   class: local-storage
   # class: nfs
   local:
-    path: /home/dode/Keycloak
+    path: /home/dode/keycloak
   nfs:
     server: 192.168.3.3
     path: /exports/keycloak
