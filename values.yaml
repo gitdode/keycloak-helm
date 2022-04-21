@@ -8,5 +8,5 @@ storage:
     path: /exports/keycloak
 
 keycloak:
-  image: quay.io/keycloak/keycloak:17.0.1
+  image: quay.io/keycloak/keycloak:18.0.0
   hostname: keycloak.luniks.net
